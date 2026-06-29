@@ -1,4 +1,3 @@
-````md
 # 🎬 MovieQuest
 
 > **Stop scrolling. Start watching.**
@@ -20,10 +19,6 @@
 ## 🌐 Live Demo
 
 > 🚧 Coming soon
-
-<!-- Replace this section once the project is deployed -->
-
-**Production:** https://your-domain.com
 
 ---
 
