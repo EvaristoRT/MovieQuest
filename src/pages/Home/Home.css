@@ -99,3 +99,11 @@
 ::-webkit-scrollbar {
     display: none;
 }
+
+.recent-movies{
+    padding: 1rem;
+    background-color: #0b1326;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: nowrap;
+}
