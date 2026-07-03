@@ -12,7 +12,19 @@ function Navbar(){
     return(
         <>
         <nav>
+            {/*Desktop section*/}
             <h1>MovieQuest</h1>
+            <ul className="nav-menu__links">
+                <li className="active">Inicio</li>
+                <li>Buscar</li>
+                <li>Recomendación</li>
+                <li>Sorprendeme</li>
+                <li>Ajustes</li>
+            </ul>
+
+
+
+            {/*Movile section*/}
             <button onClick={toggleMenu}className="side-menu__open"><TiThMenu size={30} color="#FFB3B6"/></button>
             <SideMenu closeMenu={() => setIsMenuOpen(false)} isOpen={isMenuOpen}/>
         </nav>

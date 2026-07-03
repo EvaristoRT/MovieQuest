@@ -9,6 +9,7 @@ nav{
 h1{
     color: #FFB3B6;
     font-size: 1.5rem;
+    margin: 0;
 }
 
 .side-menu__open{
@@ -26,6 +27,7 @@ h1{
     flex-direction: column;
     align-items: flex-start;
     position: absolute;
+    z-index: 1;
     top: 0;
     left: 0;
     transform: translateX(-100%) rotate(20deg);
@@ -70,4 +72,38 @@ h1{
     color: #C9AEFF;
     background-color: #6001D1;
     font-weight: 900;
+}
+
+.nav-menu__links{
+    display: none;
+}
+
+@media (min-width:768px){
+    .nav-menu__links{
+        display: flex;
+        width: 60%;
+        justify-content: space-between;
+        align-items: center;
+        color: #E5BDBE;
+        list-style: none;
+        margin-right: 1rem;
+    }
+
+    .nav-menu__links li:hover{
+        color: #FFB3B6;
+        text-decoration: underline #FFB3B6;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .active{
+        color: #FFB3B6;
+        text-decoration: underline #FFB3B6;
+        font-weight: bold;
+        background-color: transparent;
+    }
+
+    .side-menu__open{
+        display: none;
+    }
 }
