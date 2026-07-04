@@ -1,7 +1,28 @@
 import { FaSearch } from "react-icons/fa";
-import MovieCard from "../../components/MovieCard/MovieCard";
+import MovieCarousel from "../../components/MovieCarousel/MovieCarousel";
 import "./Home.css";
+import { useEffect, useState } from "react";
+import { getGenres } from "../../services/tmdb";
 function Home() {
+    const [genres , setGenres] = useState([]);
+
+    useEffect(() => {
+
+        async function loadGenres() {
+
+            const data = await getGenres();
+
+            const genresMap = Object.fromEntries(
+                data.map((genre) => [genre.id, genre.name])
+            );
+
+            setGenres(genresMap);
+        }
+
+        loadGenres();
+
+    }, []);
+
     return (
         <>
             <header className="hero">
@@ -20,10 +41,9 @@ function Home() {
                     <input type="search" placeholder="Busca películas..." />
                 </form>
             </header>
-            <section className="recent-movies">
-                <MovieCard image="https://play-lh.googleusercontent.com/cvVYM9tR0wWaKb1kEL-xYFDeru2bx1Og-sjE0g9FB9vNe8iJcY7oLysxLLxlRsGI3vR8QQ" rate={9.8} title="Los minions" genre="Comedy" year={2006}/>
-                <MovieCard image="https://play-lh.googleusercontent.com/cvVYM9tR0wWaKb1kEL-xYFDeru2bx1Og-sjE0g9FB9vNe8iJcY7oLysxLLxlRsGI3vR8QQ" rate={9.8} title="Los minions" genre="Comedy" year={2006}/>
-                <MovieCard image="https://play-lh.googleusercontent.com/cvVYM9tR0wWaKb1kEL-xYFDeru2bx1Og-sjE0g9FB9vNe8iJcY7oLysxLLxlRsGI3vR8QQ" rate={9.8} title="Los minions" genre="Comedy" year={2006}/>
+            <section className="movie-carousel">
+                <MovieCarousel endpoint="/movie/popular" title="Películas populares" genresMap={genres}/>
+                <MovieCarousel endpoint="/movie/top_rated" title="Mejores calificadas" genresMap={genres}/>
             </section>
         </>
     );

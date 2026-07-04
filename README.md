@@ -172,18 +172,18 @@ src
 
 ### Core
 
-- [ ] Project setup
-- [ ] Folder architecture
+- [x] Project setup
+- [ ] Folder architecture (in progress)
 - [ ] Routing
-- [ ] Responsive layout
+- [ ] Responsive layout (in progress)
 - [ ] Navigation
 - [ ] Footer
 - [ ] 404 page
 
 ### Movie Discovery
 
-- [ ] Trending movies
-- [ ] Popular movies
+- [x] Popular movies
+- [x] Top rated movies
 - [ ] Upcoming movies
 - [ ] Search
 - [ ] Filters

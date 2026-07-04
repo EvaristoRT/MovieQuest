@@ -1,6 +1,6 @@
 .hero {
     background-image:
-        linear-gradient(#0b1326 0%, rgba(11, 19, 38, 0.4) 50%, rgba(11, 19, 38, 0.8) 100%),
+        linear-gradient(#0b1326 0%, rgba(11, 19, 38, 0.4) 50%, rgba(11, 19, 38, 1) 100%),
         url("../../assets/images/heroBackground.png");
     background-position: center;
     background-size: cover ;
@@ -100,10 +100,13 @@
     display: none;
 }
 
-.recent-movies{
+.movie-carousel{
     padding: 1rem;
     background-color: #0b1326;
     display: flex;
-    gap: 1rem;
-    flex-wrap: nowrap;
+    flex-direction: column;
+    gap: 4rem;
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
 }
