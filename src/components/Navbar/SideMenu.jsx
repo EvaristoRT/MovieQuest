@@ -1,6 +1,6 @@
 import { IoClose } from "react-icons/io5";
 import { AiFillHome } from "react-icons/ai";
-import { FaSearch, FaQuestion, FaDiceSix } from "react-icons/fa";
+import { FaFilter, FaQuestion, FaDiceSix } from "react-icons/fa";
 import { FaGear } from "react-icons/fa6";
 function SideMenu({ closeMenu, isOpen }){
     return(
@@ -10,7 +10,7 @@ function SideMenu({ closeMenu, isOpen }){
             </button>
             <ul className="side-menu__links">
                 <li className="active"><AiFillHome />Inicio</li>
-                <li><FaSearch/>Buscar</li>
+                <li><FaFilter />Filtrar</li>
                 <li><FaQuestion />Recomendación</li>
                 <li><FaDiceSix />Sorprendeme</li>
                 <li><FaGear />Ajustes</li>

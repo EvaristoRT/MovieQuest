@@ -15,7 +15,7 @@ function MovieCarousel({ endpoint, title, genresMap }) {
         loadMovies();
     }, [endpoint]);
     return (
-        <div className="movie-carousel__wrapper">
+        <>
             <h2 className="movie-carousel__title">{title}</h2>
             <div className="movie-carousel__carousel">
                 {
@@ -30,7 +30,7 @@ function MovieCarousel({ endpoint, title, genresMap }) {
                     })
                 }
             </div>
-        </div>
+        </>
     );
 };
 

@@ -43,6 +43,8 @@ function Home() {
             </header>
             <section className="movie-carousel">
                 <MovieCarousel endpoint="/movie/popular" title="Películas populares" genresMap={genres}/>
+            </section>
+            <section className="movie-carousel">
                 <MovieCarousel endpoint="/movie/top_rated" title="Mejores calificadas" genresMap={genres}/>
             </section>
         </>

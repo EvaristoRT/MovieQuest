@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import Navbar from './components/Navbar/Navbar'
 import './App.css'
 import Home from './pages/Home/Home';
+import Footer from './components/Footer/Footer';
 
 function App() {
   return(
@@ -13,7 +14,7 @@ function App() {
         <Home />
       </main>
       <footer>
-
+        <Footer />
       </footer>
     </>
   );

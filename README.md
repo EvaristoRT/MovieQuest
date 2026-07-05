@@ -177,7 +177,7 @@ src
 - [ ] Routing
 - [ ] Responsive layout (in progress)
 - [ ] Navigation
-- [ ] Footer
+- [x] Footer
 - [ ] 404 page
 
 ### Movie Discovery
