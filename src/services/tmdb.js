@@ -10,7 +10,7 @@ const options = {
 export async function getMovies(endpoint) {
     try {
         const response = await fetch(
-            `${BASE_URL}${endpoint}?language=es-MX`,
+            `${BASE_URL}${endpoint}?language=es-MX&page=1&region=MX`,
             options
         );
 

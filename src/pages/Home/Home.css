@@ -66,6 +66,75 @@
     display: none;
 }
 
+::-webkit-scrollbar {
+    display: none;
+}
+
+.movie-carousel{
+    padding: 1rem;
+    background-color: #0b1326;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+}
+
+#quickSearch {
+    position: fixed;
+    top: 1.5rem;
+    right: 1.5rem;
+    z-index: 1000;
+
+    width: 12rem;
+    height: 4rem;
+    padding: 0 1rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: .75rem;
+
+    overflow: hidden;
+
+    border: 3px solid white;
+    border-radius: 999px;
+
+    background-color: rgba(225, 29, 71, 0.4);
+    color: white;
+    font-size: 2rem;
+
+    opacity: 0;
+    transform: translateY(-20px);
+    pointer-events: none;
+
+    box-sizing: border-box;
+
+    transition:
+        width .35s ease,
+        opacity .3s ease,
+        transform .3s ease,
+        border-color .3s ease,
+        color .3s ease,
+        box-shadow .3s ease;
+}
+
+#quickSearch.show {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+#quickSearch svg {
+    flex-shrink: 0;
+}
+
+#quickSearch span {
+    white-space: nowrap;
+    overflow: hidden;
+}
+
 @media (min-width:768px){
     .hero__title{
         font-size: 4rem;
@@ -97,19 +166,38 @@
     .hero__search-bar__icon{
         font-size: 1.5rem;
     }
-}
+    #quickSearch{
+        width: 4rem;
+        color: #E11D48;
+        border: 3px solid transparent;
+    }
+    #quickSearch:hover {
+        width: 12rem;
+        color: white;
+        border-color: white;
+        box-shadow: 0 0 15px rgba(225, 29, 72, .45);
+        cursor: pointer;
+    }
 
-::-webkit-scrollbar {
-    display: none;
-}
+    #quickSearch span {
+        white-space: nowrap;
 
-.movie-carousel{
-    padding: 1rem;
-    background-color: #0b1326;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    box-sizing: border-box;
-    width: 100%;
-    min-width: 0;
+        opacity: 0;
+        max-width: 0;
+
+        overflow: hidden;
+
+        transform: translateX(10px);
+
+        transition:
+            max-width .35s ease,
+            opacity .2s ease .15s,
+            transform .35s ease;
+    }
+
+    #quickSearch:hover span {
+        opacity: 1;
+        max-width: 120px;
+        transform: translateX(0);
+    }
 }

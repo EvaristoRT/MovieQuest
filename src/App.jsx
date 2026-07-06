@@ -12,8 +12,8 @@ function App() {
         <Navbar />
       </header>
       <main>
-        {/*<Home />*/}
-        <AboutUs />
+        {<Home />}
+        {/*<AboutUs />*/}
       </main>
       <footer>
         <Footer />
