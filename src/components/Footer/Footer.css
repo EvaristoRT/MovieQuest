@@ -54,6 +54,7 @@
 
 .footer__column__links__column__link{
     color: #E5BDBE;
+    transition: ease .3s;
 }
 
 .footer__column__links__column__link a{
@@ -76,4 +77,15 @@
     display: flex;
     justify-content: space-between;
 }
+}
+
+@media (min-width:1024px) {
+    .footer__column__links__column__link:hover{
+        text-shadow: 0 0 0 currentColor;
+        text-decoration: underline 3px;
+        text-underline-offset: 6px;
+        cursor: pointer;
+        box-sizing:content-box ;
+        transform: scale(1.5);
+    }
 }

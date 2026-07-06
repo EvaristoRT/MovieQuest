@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import Navbar from './components/Navbar/Navbar'
 import './App.css'
 import Home from './pages/Home/Home';
+import AboutUs from './pages/AboutUs/AboutUs';
 import Footer from './components/Footer/Footer';
 
 function App() {
@@ -11,7 +12,8 @@ function App() {
         <Navbar />
       </header>
       <main>
-        <Home />
+        {/*<Home />*/}
+        <AboutUs />
       </main>
       <footer>
         <Footer />
