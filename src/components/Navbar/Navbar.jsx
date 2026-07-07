@@ -2,6 +2,7 @@ import { TiThMenu } from "react-icons/ti";
 import SideMenu from "./SideMenu";
 import "./Navbar.css";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 function Navbar(){
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -26,7 +27,7 @@ function Navbar(){
             {/*Desktop section*/}
             <h1>MovieQuest</h1>
             <ul className="nav-menu__links">
-                <li className="active">Inicio</li>
+                <li className="active"><Link to="/">Inicio</Link></li>
                 <li>Filtrar</li>
                 <li>Recomendación</li>
                 <li>Sorprendeme</li>

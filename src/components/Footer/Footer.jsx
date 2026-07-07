@@ -1,5 +1,7 @@
 import "./Footer.css"
 import { PiFilmSlateBold } from "react-icons/pi";
+import { Link } from "react-router-dom";
+import NavLink from "./NavLink";
 function Footer(){
     return(
         <>
@@ -12,7 +14,7 @@ function Footer(){
             <div className="footer__column__links__column">
                 <ul className="footer__column__links__wrapper">
                     <li className="footer__column__links__column__title">Navegación</li>
-                    <li className="footer__column__links__column__link">Inicio</li>
+                    <li className="footer__column__links__column__link"><NavLink to="/">Inicio</NavLink></li>
                     <li className="footer__column__links__column__link">Filtrar</li>
                     <li className="footer__column__links__column__link">Recomendación</li>
                     <li className="footer__column__links__column__link">Sorprendeme</li>
@@ -21,7 +23,7 @@ function Footer(){
             <div className="footer__column__links__column">
                 <ul className="footer__column__links__wrapper">
                     <li className="footer__column__links__column__title">Recursos</li>
-                    <li className="footer__column__links__column__link">Acerca</li>
+                    <li className="footer__column__links__column__link"><NavLink to="/about">Acerca</NavLink></li>
                     <li className="footer__column__links__column__link"><a href="https://github.com/EvaristoRT/MovieQuest">Github</a></li>
                 </ul>
             </div>
