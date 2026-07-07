@@ -15,19 +15,19 @@
 }
 
 .movie-card__rate__icon{
-    color: #FFB3B6;
+    color: var(--rate-star);
 }
 
 .movie-card__rate{
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: var(--rate-back);
     width: fit-content;
     height: fit-content;
     padding: .3rem;
     border-radius: 1rem;
-    color: white;
+    color: var(--title-secondary);
 }
 .movie-card__title{
-    color: #DAE2FD;
+    color: var(--title-primary);
     font-size: 1.2rem;
     font-weight: bold;
     margin-top: .6rem;
@@ -36,6 +36,6 @@
 .movie-card__info{
     display: flex;
     align-items: center;
-    color: #E5BDBE;
+    color: var(--text-primary);
     font-size: 1rem;
 }

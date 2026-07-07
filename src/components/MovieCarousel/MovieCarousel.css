@@ -1,5 +1,5 @@
 .movie-carousel__title{
-    color: #DAE2FD;
+    color: var(--title-primary);
     font-weight: bold;
     font-size: 1.5rem;
 }
@@ -19,16 +19,16 @@
     }
     
     .movie-carousel__carousel::-webkit-scrollbar-track {
-        background: rgba(255, 255, 255, 0.05);
+        background: var(--search-bar-back);
         border-radius: 1rem;
     }
     
     .movie-carousel__carousel::-webkit-scrollbar-thumb {
-        background: #E11D48;
+        background: var(--secondary);
         border-radius: 1rem;
     }
     
     .movie-carousel__carousel::-webkit-scrollbar-thumb:hover {
-        background: #c81a3f;
+        background: var(--slide-hover);
     }
 }

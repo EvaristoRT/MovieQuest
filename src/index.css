@@ -3,3 +3,35 @@
     padding: 0;
     font-family: 'Inter', sans-serif;
 }
+
+:root{
+    --badge-text: #FFFAF9;
+    --logo-primary: #FFB3B6;
+    --secondary: #E11D48;
+    --title-primary: #DAE2FD;
+    --title-secondary: white;
+    --text-primary: #E5BDBE;
+    --text-primary-fade: rgba(229, 189, 190, 0.6);
+    --text-primary-8: rgba(229, 189, 190, 0.8);
+    --search-bar-back: rgba(255, 255, 255, 0.05);
+    --search-bar-border: rgba(255, 255, 255, 0.1);
+    --background-primary: #0b1326;
+    --background-primary-2: rgba(11, 19, 38, 0.2);
+    --background-primary-4: rgba(11, 19, 38, 0.4);
+    --background-secondary: rgb(19, 27, 46);
+    --background-secondary-fade: rgba(19, 27, 46, 0.3);
+    --quick-search-secondary: white;
+    --quick-search-back: rgba(225, 29, 71, 0.4);
+    --quick-search-back-2: rgba(225, 29, 72, 0.45);
+    --circle-fade: rgba(225, 29, 72, 0.12);
+    --footer-over-fade: rgba(23, 31, 51, 0.70);
+    --icon-primary: #B80035;
+    --icon-primary-fade: rgba(184, 0, 52, 0.2);
+    --stack-back: rgba(30, 41, 59, 0.4);
+    --stack-border: rgba(255, 255, 255, 0.1);
+    --active-color: #C9AEFF;
+    --active-back: #6001D1;
+    --slide-hover: #c81a3f;
+    --rate-star: #FFB3B6;
+    --rate-back: rgba(0, 0, 0, 0.6);
+}

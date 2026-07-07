@@ -1,6 +1,8 @@
 .hero {
     background-image:
-        linear-gradient(#0b1326 0%, rgba(11, 19, 38, 0.4) 50%, rgba(11, 19, 38, 1) 100%),
+        linear-gradient(var(--background-primary) 0%, 
+        var(--background-primary-4) 50%, 
+        var(--background-primary) 100%),
         url("../../assets/images/heroBackground.png");
     background-position: center;
     background-size: cover ;
@@ -16,32 +18,32 @@
     box-sizing: border-box;
 }
 .hero__badge{
-    color: #FFFAF9;
-    background-color: #E11D48;
+    color: var(--badge-text);
+    background-color: var(--secondary);
     width: fit-content;
     padding: .2rem 1rem;
     border-radius: 1rem;
 }
 
 .hero__title{
-    color: white;
+    color: var(--title-secondary);
     font-size: 2.5rem;
     font-weight: 900;
 }
 
 .hero__description{
-    color: #E5BDBE;
+    color: var(--text-primary);
     width: 70%;
     font-size: 1rem;
 }
 
 .hero__search-bar{
-    color: rgba(229, 189, 190, 0.6);
+    color: var(--text-primary-fade);
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    background-color: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: var(--search-bar-back);
+    border: 1px solid var(--search-bar-border);
     border-radius: 1rem;
     padding: .5rem 1rem;
     width: calc(100% - 2rem);
@@ -52,13 +54,13 @@
     background-color: transparent;
     border: none;
     outline: none;
-    color: #E5BDBE;
+    color: var(--text-primary);
     width: 90%;
     font-size: 1rem;
 }
 
 .hero__search-bar input::placeholder{
-    color: #E5BDBE;
+    color: var(--text-primary);
     opacity: .6;
 }
 
@@ -72,7 +74,7 @@
 
 .movie-carousel{
     padding: 1rem;
-    background-color: #0b1326;
+    background-color: var(--background-primary);
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
@@ -98,11 +100,12 @@
 
     overflow: hidden;
 
-    border: 3px solid white;
+    border: 3px solid var(--quick-search-secondary);
     border-radius: 999px;
 
-    background-color: rgba(225, 29, 71, 0.4);
-    color: white;
+    background-color: var(--quick-search-back);
+    color: var(--quick-search-secondary);
+    box-shadow: 0 0 15px var(--quick-search-back-2);
     font-size: 2rem;
 
     opacity: 0;
@@ -168,14 +171,13 @@
     }
     #quickSearch{
         width: 4rem;
-        color: #E11D48;
+        color: var(--secondary);
         border: 3px solid transparent;
     }
     #quickSearch:hover {
         width: 12rem;
-        color: white;
-        border-color: white;
-        box-shadow: 0 0 15px rgba(225, 29, 72, .45);
+        color: var(--quick-search-secondary);
+        border-color: var(--quick-search-secondary);
         cursor: pointer;
     }
 

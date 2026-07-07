@@ -3,6 +3,7 @@ import SideMenu from "./SideMenu";
 import "./Navbar.css";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { FaMoon } from "react-icons/fa";
 function Navbar(){
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -31,7 +32,13 @@ function Navbar(){
                 <li>Filtrar</li>
                 <li>Recomendación</li>
                 <li>Sorprendeme</li>
-                <li>Ajustes</li>
+                <li><FaMoon /><label className="switch">
+                        <input
+                            type="checkbox"
+                            
+                        />
+                        <span className="slider"></span>
+                    </label></li>
             </ul>
 
 

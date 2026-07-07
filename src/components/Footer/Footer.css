@@ -7,9 +7,9 @@
 }
 
 #footer__column__icon{
-    color: #FFFAF9;
+    color: var(--badge-text);
     font-size: 3rem;
-    background-color: #E11D48;
+    background-color: var(--secondary);
     border-radius: 1rem;
     padding: 1.5rem;
     margin-bottom: 1rem;
@@ -17,19 +17,19 @@
 }
 
 #footer__column__logo{
-    color: #FFB3B6;
+    color: var(--logo-primary);
     font-size: 3rem;
     font-weight: 800;
     margin-bottom: 3rem;
 }
 #footer__column__description{
-    color: #E5BDBE;
+    color: var(--text-primary);
     text-align: center;
     margin-bottom: 3rem;
     font-size: 1.2rem;
 }
 #footer__column__description span{
-    color: #DAE2FD;
+    color: var(--title-primary);
     display: block;
 }
 
@@ -47,19 +47,19 @@
 }
 
 .footer__column__links__column__title{
-    color: #DAE2FD;
+    color: var(--title-primary);
     font-weight: bold;
     font-size: 1rem;
 }
 
 .footer__column__links__column__link{
-    color: #E5BDBE;
+    color: var(--text-primary);
     transition: ease .3s;
 }
 
 .footer__column__links__column__link a{
     text-decoration: none;
-    color: #E5BDBE;
+    color: var(--text-primary);
 }
 
 #footer__rights{

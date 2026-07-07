@@ -8,6 +8,7 @@ import { Routes, Route } from "react-router-dom";
 import ScrollToTop from './components/ScrollToTop';
 
 function App() {
+  const [darkMode, setDarkMode] = useState(true);
   return(
     <>
     <ScrollToTop />

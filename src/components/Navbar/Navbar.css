@@ -7,7 +7,7 @@ nav{
 }
 
 h1{
-    color: #FFB3B6;
+    color: var(--logo-primary);
     font-size: 1.5rem;
     margin: 0;
 }
@@ -22,7 +22,7 @@ h1{
     box-sizing: border-box;
     width: 100vw;
     height: 100vh;
-    background-color: #0B1326;
+    background-color: var(--background-primary);
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -56,7 +56,7 @@ h1{
     align-items: flex-start;
     justify-content: center;
     list-style: none;
-    color: #E5BDBE;
+    color: var(--text-primary);
     font-size: 1.5rem;
     gap: 1rem;
 }
@@ -70,41 +70,100 @@ h1{
 }
 
 .active {
-    color: #C9AEFF;
-    background-color: #6001D1;
+    color: var(--active-color);
+    background-color: var(--active-back);
     font-weight: 900;
+}
+
+a{
+    text-decoration: none;
+    color: var(--text-primary);
 }
 
 .nav-menu__links{
     display: none;
+    
+}
+
+.switch{
+    position: relative;
+    width: 50px;
+    height: 28px;
+}
+
+.switch input{
+    display: none;
+}
+
+.slider{
+    position: absolute;
+    inset: 0;
+    background: #444;
+    border-radius: 999px;
+    transition: .3s;
+    cursor: pointer;
+}
+
+.slider::before{
+    content: "";
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    left: 3px;
+    top: 3px;
+    background: white;
+    border-radius: 50%;
+    transition: .3s;
+}
+
+.switch input:checked + .slider{
+    background: var(--secondary);
+}
+
+.switch input:checked + .slider::before{
+    transform: translateX(22px);
 }
 
 @media (min-width:768px){
     .nav-menu__links{
         display: flex;
         width: 60%;
-        justify-content: space-between;
+        justify-content: space-evenly;
         align-items: center;
-        color: #E5BDBE;
+        color: var(--text-primary);
         list-style: none;
         margin-right: 1rem;
     }
 
+    .nav-menu__links li{
+        display: flex;
+        align-items: center;
+        gap: .3rem;
+    }
+
     .nav-menu__links li:hover{
-        color: #FFB3B6;
-        text-decoration: underline #FFB3B6;
+        color: var(--logo-primary);
+        text-decoration: underline var(--logo-primary);
         font-weight: bold;
         cursor: pointer;
     }
 
     .active{
-        color: #FFB3B6;
-        text-decoration: underline #FFB3B6;
+        color: var(--logo-primary);
+        text-decoration: underline var(--logo-primary);
         font-weight: bold;
         background-color: transparent;
     }
 
     .side-menu__open{
         display: none;
+    }
+
+    .switch input{
+        display: none;
+    }
+    .slider{
+        width: 50px;
+        height: 28px;
     }
 }

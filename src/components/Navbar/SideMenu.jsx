@@ -14,7 +14,15 @@ function SideMenu({ closeMenu, isOpen }){
                 <li><FaFilter />Filtrar</li>
                 <li><FaQuestion />Recomendación</li>
                 <li><FaDiceSix />Sorprendeme</li>
-                <li><FaGear />Ajustes</li>
+                <li><FaGear />Modo Oscuro 
+                    <label className="switch">
+                        <input
+                            type="checkbox"
+                            
+                        />
+                        <span className="slider"></span>
+                    </label>
+                </li>
             </ul>
         </div>
     );
