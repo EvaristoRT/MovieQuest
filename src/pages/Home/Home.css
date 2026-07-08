@@ -1,8 +1,6 @@
 .hero {
     background-image:
-        linear-gradient(var(--background-primary) 0%, 
-        var(--background-primary-4) 50%, 
-        var(--background-primary) 100%),
+        var(--hero-gradient),
         url("../../assets/images/heroBackground.png");
     background-position: center;
     background-size: cover ;

@@ -1,15 +1,28 @@
 import"./AboutUs.css";
 import whatIsImage from "../../assets/images/whatIs.png"
+import whatIsImageLight from "../../assets/images/whatIsLight.png"
 import tmdbLogo from "../../assets/images/tmdbLogo.svg"
+import aboutDark from "../../assets/images/heroAboutUs.png"
+import aboutLight from "../../assets/images/heroAboutUsLight.png"
+import { useContext } from "react";
+import { ThemeContext } from "../../context/ThemeContext"
 import { BsStars } from "react-icons/bs";
 import { MdOutlineVideoLibrary, MdOutlineQueryStats } from "react-icons/md";
 import { FaMedal, FaReact, FaJsSquare, FaCss3Alt, FaHtml5, FaSave, FaGitAlt, FaGithub } from "react-icons/fa";
 import { SiReactrouter, SiModelcontextprotocol, SiVite, SiThemoviedatabase } from "react-icons/si";
 
 function AboutUs(){
+    const { darkMode } = useContext(ThemeContext);
     return(
         <>
-            <section id="hero">
+            <section id="hero" style={{
+                backgroundImage: `
+                    linear-gradient(transparent 0%,
+                    var(--background-primary-2) 30%,
+                    var(--background-primary) 100%),
+                    url(${darkMode ? aboutDark : aboutLight})
+                `
+            }}>
                 <p id="hero__title">Acerca de <span>MovieQuest</span></p>
                 <p id="hero__description">Ayudando a los amantes de las películas a pasar menos tiempo buscando y más disfrutando</p>
             </section>
@@ -21,7 +34,7 @@ function AboutUs(){
                     Organiza tu biblioteca con listas de favoritos, películas por ver y colecciones personalizadas. Además, consulta estadísticas sobre tus hábitos de visualización, acepta desafíos cinematográficos y descubre nuevos títulos mediante funciones como recomendaciones inteligentes y el modo "Sorpréndeme", convirtiendo la elección de una película en una experiencia mucho más entretenida.</p>
                     <button id="what-is__button">Empieza a explorar</button>
                 </div>
-                <img src={whatIsImage} alt="What is image" id="what-is__image"/>
+                <img src={darkMode ? whatIsImage : whatIsImageLight} alt="What is image" id="what-is__image"/>
             </section>
             <section id="features">
                 <p id="features__title">Características principales</p>
@@ -62,7 +75,14 @@ function AboutUs(){
                         <p id="tmdb-api" className="stack__row__element"><SiThemoviedatabase />TMDB API</p>
                         <p id="local-storage" className="stack__row__element"><FaSave />Local Storage</p>
                         <p id="git" className="stack__row__element"><FaGitAlt />Git</p>
-                        <p id="github" className="stack__row__element"><FaGithub />Github</p>
+                        <p id="github" className="stack__row__element" style={
+                            {
+                                color: darkMode ? "#FFF" : "#000",
+                                boxShadow: darkMode
+                                ? "0 0 5px #FFFFFF, 0 0 10px #FFFFFF, 0 0 20px rgba(255,255,255,.6)"
+                                : "0 0 5px #000000, 0 0 10px #000000, 0 0 20px rgba(255,255,255,.6)"
+                            }
+                        }><FaGithub />Github</p>
                     </div>
                 </div>
             </section>

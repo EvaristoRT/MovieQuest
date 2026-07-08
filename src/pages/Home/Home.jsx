@@ -1,8 +1,9 @@
 import { FaSearch } from "react-icons/fa";
 import MovieCarousel from "../../components/MovieCarousel/MovieCarousel";
 import "./Home.css";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useContext } from "react";
 import { getGenres } from "../../services/tmdb";
+import heroDark from "../../assets/images/heroBackground.png"
 function Home() {
     const [genres , setGenres] = useState([]);
     const [showButton, setShowButton] = useState(false);

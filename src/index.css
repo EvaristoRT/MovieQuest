@@ -34,6 +34,12 @@
     --slide-hover: #c81a3f;
     --rate-star: #FFB3B6;
     --rate-back: rgba(0, 0, 0, 0.6);
+    --hero-gradient: linear-gradient(
+        var(--background-primary) 0%,
+        var(--background-primary-4) 50%,
+        var(--background-primary) 100%
+    );
+    --about-us-image: "assets/images/heroAboutUs.png";
 }
 
 .light{
@@ -79,4 +85,11 @@
 
     --rate-star: #F59E0B;
     --rate-back: rgba(255,255,255,.92);
+
+    --hero-gradient: linear-gradient(
+        transparent 0%,
+        var(--background-primary) 100%
+    );
+
+    --about-us-image: "../../assets/images/heroAboutUsLight.png";
 }
