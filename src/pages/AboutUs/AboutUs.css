@@ -145,7 +145,7 @@
 
 .feature__item__title{
     font-weight: bold;
-    color: #DAE2FD;
+    color: var(--title-primary);
 }
 
 .feature__item__description{
@@ -431,7 +431,7 @@
 
     .feature__item:hover .feature__item__icon{
         border: 2px solid var(--quick-search-secondary);
-        color: white;
+        color: var(--quick-search-secondary);
     }
 
     .feature__item__icon{

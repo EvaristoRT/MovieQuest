@@ -3,7 +3,7 @@ nav{
     align-items: center;
     justify-content: space-between;
     padding: 1rem;
-    background-color: #0B1326;
+    background-color: var(--background-primary);
 }
 
 h1{
@@ -15,6 +15,7 @@ h1{
 .side-menu__open{
     background-color: transparent;
     border: none;
+    color: var(--logo-primary);
 }
 
 .side-menu{
@@ -47,6 +48,7 @@ h1{
     background-color: transparent;
     border: none;
     margin-bottom: 1rem;
+    color: var(--logo-primary);
 }
 
 .side-menu__links{
@@ -146,6 +148,10 @@ a{
         text-decoration: underline var(--logo-primary);
         font-weight: bold;
         cursor: pointer;
+    }
+
+    a{
+        color: var(--logo-primary);
     }
 
     .active{

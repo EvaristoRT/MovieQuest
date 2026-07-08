@@ -1,12 +1,13 @@
 import { TiThMenu } from "react-icons/ti";
 import SideMenu from "./SideMenu";
 import "./Navbar.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { FaMoon } from "react-icons/fa";
+import { ThemeContext } from "../../context/ThemeContext";
 function Navbar(){
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+    const { darkMode, setDarkMode } = useContext(ThemeContext);
     const toggleMenu = () => {
         setIsMenuOpen(prev => !prev);
     };
@@ -35,7 +36,8 @@ function Navbar(){
                 <li><FaMoon /><label className="switch">
                         <input
                             type="checkbox"
-                            
+                            checked={darkMode}
+                            onChange={() => setDarkMode(!darkMode)}
                         />
                         <span className="slider"></span>
                     </label></li>
@@ -44,7 +46,7 @@ function Navbar(){
 
 
             {/*Movile section*/}
-            <button onClick={toggleMenu}className="side-menu__open"><TiThMenu size={30} color="#FFB3B6"/></button>
+            <button onClick={toggleMenu}className="side-menu__open"><TiThMenu size={30}/></button>
             <SideMenu closeMenu={() => setIsMenuOpen(false)} isOpen={isMenuOpen}/>
         </nav>
         </>

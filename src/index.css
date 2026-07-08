@@ -35,3 +35,48 @@
     --rate-star: #FFB3B6;
     --rate-back: rgba(0, 0, 0, 0.6);
 }
+
+.light{
+    --badge-text: #FFFFFF;
+    --logo-primary: #E11D48;
+    --secondary: #E11D48;
+
+    --title-primary: #111827;
+    --title-secondary: #1F2937;
+
+    --text-primary: #4B5563;
+    --text-primary-fade: rgba(75, 85, 99, 0.6);
+    --text-primary-8: rgba(75, 85, 99, 0.8);
+
+    --search-bar-back: rgba(17, 24, 39, 0.04);
+    --search-bar-border: rgba(17, 24, 39, 0.08);
+
+    --background-primary: #FAF8F8;
+    --background-primary-2: rgba(250, 248, 248, 0.2);
+    --background-primary-4: rgba(250, 248, 248, 0.4);
+
+    --background-secondary: #FFFFFF;
+    --background-secondary-fade: rgba(255,255,255,.75);
+
+    --quick-search-secondary: #000000;
+    --quick-search-back: rgba(225,29,72,.15);
+    --quick-search-back-2: rgba(225,29,72,.25);
+
+    --circle-fade: rgba(225,29,72,.08);
+
+    --footer-over-fade: rgba(255,255,255,.85);
+
+    --icon-primary: #E11D48;
+    --icon-primary-fade: rgba(225,29,72,.12);
+
+    --stack-back: rgba(248,250,252,.9);
+    --stack-border: rgba(15,23,42,.08);
+
+    --active-color: #E11D48;
+    --active-back: #E11D48;
+
+    --slide-hover: #C81A3F;
+
+    --rate-star: #F59E0B;
+    --rate-back: rgba(255,255,255,.92);
+}
