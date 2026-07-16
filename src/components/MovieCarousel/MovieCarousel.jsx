@@ -1,10 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import "./MovieCarousel.css"
 import { BASE_URL, IMAGE_BASE_URL, getMovies } from "../../services/tmdb"
+import { GenresContext } from "../../context/GenresContext";
 import MovieCard from "../MovieCard/MovieCard";
 
-function MovieCarousel({ endpoint, title, genresMap }) {
+function MovieCarousel({ endpoint, title }) {
     const [movies, setMovies] = useState([]);
+    const { genresMap } = useContext(GenresContext);
 
     useEffect(() => {
         async function loadMovies() {

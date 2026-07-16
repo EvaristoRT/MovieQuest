@@ -18,23 +18,6 @@ function Home() {
         }, 500);
     }
 
-    useEffect(() => {
-
-        async function loadGenres() {
-
-            const data = await getGenres();
-
-            const genresMap = Object.fromEntries(
-                data.map((genre) => [genre.id, genre.name])
-            );
-
-            setGenres(genresMap);
-        }
-
-        loadGenres();
-
-    }, []);
-
     useEffect(() => { 
         const handleScroll = () =>{
             setShowButton(window.scrollY > 700)
@@ -64,13 +47,13 @@ function Home() {
                 </form>
             </header>
             <section className="movie-carousel">
-                <MovieCarousel endpoint="/movie/now_playing" title="Actualmente en cines" genresMap={genres}/>
+                <MovieCarousel endpoint="/movie/now_playing" title="Actualmente en cines"/>
             </section>
             <section className="movie-carousel">
-                <MovieCarousel endpoint="/movie/popular" title="Películas populares" genresMap={genres}/>
+                <MovieCarousel endpoint="/movie/popular" title="Películas populares"/>
             </section>
             <section className="movie-carousel">
-                <MovieCarousel endpoint="/movie/top_rated" title="Mejores calificadas" genresMap={genres}/>
+                <MovieCarousel endpoint="/movie/top_rated" title="Mejores calificadas"/>
             </section>
             <button onClick={quickSearch} id="quickSearch" className={showButton ? "show" : ""}><FaSearch /><span>Buscar</span></button>
             
