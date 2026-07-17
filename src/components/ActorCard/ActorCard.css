@@ -4,16 +4,17 @@
     align-items: center;
     height: fit-content;
     text-align: center;
+    flex-shrink: 0;
 }
 
 .actor-card__photo{
     height: 150px;
     width: 150px;
-    border: 1px solid var(--search-bar-back);
+    border: 3px solid var(--search-bar-back);
     border-radius: 50%;
     background-position: center;
     background-size: cover;
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     margin-bottom: .3rem;
 }
 

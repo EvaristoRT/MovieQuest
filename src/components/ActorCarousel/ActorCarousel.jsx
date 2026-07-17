@@ -1,10 +1,14 @@
 import "./ActorCarousel.css";
 import ActorCard from "../ActorCard/ActorCard";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useContext } from "react";
 import { getActors, IMAGE_BASE_URL } from "../../services/tmdb";
+import { ThemeContext } from "../../context/ThemeContext";
+import missingPhoto from "../../assets/images/missingPhoto.png"
+import missingPhotoLight from "../../assets/images/missingPhotoLight.png"
 function ActorCarousel({ id }){
     const [actors, setActors] = useState([]);
     const carouselRef = useRef(null);
+    const {darkMode} = useContext(ThemeContext);
     useEffect(() => {
             async function loadActors() {
                 const data = await getActors(id);
@@ -26,7 +30,13 @@ function ActorCarousel({ id }){
                 actors.map((actor) => {
                     return (<ActorCard 
                         key={actor.id}
-                        image={IMAGE_BASE_URL + actor.profile_path} 
+                        image={
+                            actor.profile_path !== null
+                            ? IMAGE_BASE_URL + actor.profile_path
+                            : darkMode
+                                ? missingPhoto
+                                :missingPhotoLight
+                        } 
                         name={actor.name} 
                         character={actor.character} 
                         />);
