@@ -46,3 +46,40 @@ export async function getGenres() {
         return [];
     }
 }
+
+export async function getMovieDetails(id){
+    try{
+        const response = await fetch(
+            `${BASE_URL}/movie/${id}?language=es-MX`,
+            options
+        );
+
+        if (!response.ok) {
+            throw new Error("Error al obtener los detalles de la película.");
+        }
+
+        const data = await response.json();
+        return data;
+    }catch (error){
+        console.log(error);
+        return[];
+    }
+}
+
+export async function getActors(id){
+    try{
+        const response = await fetch(
+            `${BASE_URL}/movie/${id}/credits?language=es-MX`,
+            options
+        );
+        if (!response.ok) {
+            throw new Error("Error al obtener los actores.");
+        }
+
+        const data = await response.json();
+        return data.cast;
+    }catch (error){
+        console.log(error);
+        return[];
+    }
+}

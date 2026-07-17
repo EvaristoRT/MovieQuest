@@ -1,0 +1,26 @@
+.actor-card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: fit-content;
+    text-align: center;
+}
+
+.actor-card__photo{
+    height: 150px;
+    width: 150px;
+    border: 1px solid var(--search-bar-back);
+    border-radius: 50%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-bottom: .3rem;
+}
+
+.actor-card__name{
+    color: var(--title-primary);
+}
+
+.actor-card__character{
+    color:  var(--text-primary);
+}

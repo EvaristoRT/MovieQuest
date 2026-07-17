@@ -6,6 +6,7 @@ import AboutUs from './pages/AboutUs/AboutUs';
 import Footer from './components/Footer/Footer';
 import { Routes, Route } from "react-router-dom";
 import ScrollToTop from './components/ScrollToTop';
+import MovieDetails from './pages/MovieDetails/MovieDetails';
 
 function App() {
   const [darkMode, setDarkMode] = useState(true);
@@ -20,6 +21,10 @@ function App() {
           <Route 
             path="/"
             element={<Home />}
+          />
+          <Route 
+            path="/movie/:id"
+            element={<MovieDetails />}
           />
           <Route 
             path="/about"

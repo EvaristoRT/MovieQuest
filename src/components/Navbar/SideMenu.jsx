@@ -13,7 +13,8 @@ function SideMenu({ closeMenu, isOpen }){
                 <IoClose size={30} />
             </button>
             <ul className="side-menu__links">
-                <li className="active"><Link to="/"><AiFillHome />Inicio</Link></li>
+                <li className="active"><Link to="/" onClick={closeMenu
+                }><AiFillHome />Inicio</Link></li>
                 <li><FaFilter />Filtrar</li>
                 <li><FaQuestion />Recomendación</li>
                 <li><FaDiceSix />Sorprendeme</li>
