@@ -187,8 +187,8 @@ src
 - [ ] Upcoming movies
 - [ ] Search
 - [ ] Filters
-- [ ] Movie details
-- [ ] Similar movies
+- [x] Movie details
+- [x] Similar movies
 
 ### Personal Library
 
