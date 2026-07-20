@@ -3,19 +3,23 @@ import { FaCircle } from "react-icons/fa";
 import { FaStar } from "react-icons/fa";
 import MovieCarousel from "../../components/MovieCarousel/MovieCarousel";
 import ActorCarousel from "../../components/ActorCarousel/ActorCarousel";
+import LoadingScreen from "../../components/LoadingScreen/LoadingScreen";
 import { useParams } from "react-router-dom";
 import { getMovieDetails } from "../../services/tmdb";
 import "./MovieDetails.css";
 
 function MovieDetails() {
     const [movie, setMovie] = useState(null);
+    const [isLoading, setIsLoading] = useState(true)
     const [isPhone, setIsPhone] = useState(window.innerWidth <= 768);
     const { id } = useParams();
 
     useEffect(() => {
         async function fetchMovie() {
+            setIsLoading(true)
             const data = await getMovieDetails(id);
             setMovie(data);
+            setIsLoading(false);
         }
     
         fetchMovie();
@@ -32,8 +36,8 @@ function MovieDetails() {
             window.removeEventListener("resize", handleResize);
         };
     }, []);
-    if (!movie) {
-        return <p>Cargando...</p>;
+    if (isLoading) {
+        return <LoadingScreen />;
     }
     return (
         <>
