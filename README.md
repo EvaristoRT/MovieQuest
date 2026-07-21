@@ -185,7 +185,7 @@ src
 - [x] Popular movies
 - [x] Top rated movies
 - [ ] Upcoming movies
-- [ ] Search
+- [x] Search
 - [ ] Filters
 - [x] Movie details
 - [x] Similar movies
@@ -214,7 +214,7 @@ src
 
 ### User Experience
 
-- [ ] Dark / Light Theme
+- [x] Dark / Light Theme
 - [ ] Skeleton Loading
 - [ ] Smooth Animations
 - [ ] Pagination
@@ -223,7 +223,7 @@ src
 
 ### Context API
 
-- [ ] Theme Context
+- [x] Theme Context
 - [ ] Favorites Context
 - [ ] Collections Context
 - [ ] Settings Context
