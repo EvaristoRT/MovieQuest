@@ -1,13 +1,17 @@
 import { FaSearch } from "react-icons/fa";
 import MovieCarousel from "../../components/MovieCarousel/MovieCarousel";
+import SearchBar from "../../components/SearchBar/SearchBar";
 import "./Home.css";
 import { useEffect, useRef, useState, useContext } from "react";
 import { getGenres } from "../../services/tmdb";
-import heroDark from "../../assets/images/heroBackground.png"
+import heroDark from "../../assets/images/heroBackground.png";
+import { useNavigate } from "react-router-dom";
 function Home() {
     const [genres , setGenres] = useState([]);
     const [showButton, setShowButton] = useState(false);
     const searchInputRef = useRef(null);
+    const navigate = useNavigate();
+    const [query, setQuery] = useState("")
 
     const quickSearch = () =>{
         document.getElementById("hero-home").scrollIntoView({
@@ -41,10 +45,7 @@ function Home() {
                     cada película. Descubre miles de títulos seleccionados especialmente
                     para tus gustos.
                 </p>
-                <form className="hero__search-bar">
-                    <FaSearch className="hero__search-bar__icon" />
-                    <input ref={searchInputRef}type="search" placeholder="Busca películas..." />
-                </form>
+                <SearchBar inputRef={searchInputRef} initialValue={""}/>
             </header>
             <section className="movie-carousel">
                 <MovieCarousel endpoint="/movie/now_playing" title="Actualmente en cines"/>

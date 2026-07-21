@@ -35,37 +35,6 @@
     font-size: 1rem;
 }
 
-.hero__search-bar{
-    color: var(--text-primary-fade);
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    background-color: var(--search-bar-back);
-    border: 1px solid var(--search-bar-border);
-    border-radius: 1rem;
-    padding: .5rem 1rem;
-    width: calc(100% - 2rem);
-    gap: .5rem;
-}
-
-.hero__search-bar input{
-    background-color: transparent;
-    border: none;
-    outline: none;
-    color: var(--text-primary);
-    width: 90%;
-    font-size: 1rem;
-}
-
-.hero__search-bar input::placeholder{
-    color: var(--text-primary);
-    opacity: .6;
-}
-
-.hero__search-bar input::-webkit-search-cancel-button {
-    display: none;
-}
-
 ::-webkit-scrollbar {
     display: none;
 }

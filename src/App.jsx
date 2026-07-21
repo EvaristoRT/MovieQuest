@@ -7,6 +7,7 @@ import Footer from './components/Footer/Footer';
 import { Routes, Route } from "react-router-dom";
 import ScrollToTop from './components/ScrollToTop';
 import MovieDetails from './pages/MovieDetails/MovieDetails';
+import Search from './pages/Search/Search';
 
 function App() {
   const [darkMode, setDarkMode] = useState(true);
@@ -29,6 +30,10 @@ function App() {
           <Route 
             path="/about"
             element={<AboutUs />}
+          />
+          <Route 
+            path='/search'
+            element={<Search />}
           />
         </Routes>
       </main>

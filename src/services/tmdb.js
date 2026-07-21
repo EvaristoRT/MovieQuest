@@ -83,3 +83,18 @@ export async function getActors(id){
         return[];
     }
 }
+
+export async function getSearch(query, page){
+    try{
+        const response = await fetch(
+            `${BASE_URL}/search/movie?query=${encodeURIComponent(query)}&include_adult=false&language=es-MX&page=${page}`,
+            options
+        )
+
+        const data = await response.json();
+        return data;
+    }catch (error){
+        console.log(error)
+        return[];
+    }
+};
