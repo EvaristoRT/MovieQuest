@@ -98,3 +98,49 @@ export async function getSearch(query, page){
         return[];
     }
 };
+
+export async function getRandomMovie(){
+    const endpoints = [
+        "/movie/now_playing",
+        "/movie/popular",
+        "/movie/top_rated"
+    ]
+    const endpoint = endpoints[Math.floor(Math.random() * endpoints.length)];
+
+    try {
+        const response = await fetch(
+            `${BASE_URL}${endpoint}?language=es-MX&region=MX`,
+            options
+        );
+
+        if (!response.ok) {
+            throw new Error("Error al obtener las películas para la sección aleatoria.");
+        }
+
+        const data = await response.json();
+        const maxPages = Math.min(data.total_pages, 100);
+        const randomPage = Math.floor(Math.random() * maxPages) + 1;
+        const responsePage = await fetch(
+            `${BASE_URL}${endpoint}?language=es-MX&page=${randomPage}&region=MX`,
+            options
+        );
+
+        if (!responsePage.ok) {
+            throw new Error("Error al obtener las películas para la sección aleatoria.");
+        }
+
+        const finalPageData = await responsePage.json();
+
+        if (finalPageData.results.length === 0) {
+            throw new Error("No se encontraron películas.");
+        }
+        
+        const movie = finalPageData.results[Math.floor(Math.random() * finalPageData.results.length)]
+
+        return movie.id;
+
+    } catch (error) {
+        console.error(error);
+        return;
+    }
+}

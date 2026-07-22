@@ -202,7 +202,7 @@ src
 ### Smart Features
 
 - [ ] Recommendation Wizard
-- [ ] Surprise Me
+- [x] Surprise Me
 - [ ] Movie Roulette
 - [ ] Movie Night Planner
 

@@ -8,6 +8,7 @@ import { Routes, Route } from "react-router-dom";
 import ScrollToTop from './components/ScrollToTop';
 import MovieDetails from './pages/MovieDetails/MovieDetails';
 import Search from './pages/Search/Search';
+import RandomMovie from './pages/RandomMovie/RandomMovie';
 
 function App() {
   const [darkMode, setDarkMode] = useState(true);
@@ -34,6 +35,10 @@ function App() {
           <Route 
             path='/search'
             element={<Search />}
+          />
+          <Route 
+            path='/random'
+            element={<RandomMovie />}
           />
         </Routes>
       </main>

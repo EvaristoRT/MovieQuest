@@ -1,0 +1,104 @@
+#random-movie{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 800px;
+    position: relative;
+    background-color: var(--background-primary);
+    box-sizing: border-box;
+}
+#random-movie__container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: absolute;
+}
+
+#random-movie__button{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    padding: 2rem;
+    font-size: 2rem;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    box-sizing: border-box;
+    background-color: var(--secondary);
+    border: none;
+    color: var(--title-primary);
+    position: absolute;
+    z-index: 1;
+    animation: breathShadow 4s linear infinite;
+}
+
+#random-movie__button:hover{
+    cursor: pointer;
+}
+
+#random-movie__outter-circle{
+    width: 300px;
+    aspect-ratio: 1/1;
+    position: absolute;
+    background-color: transparent;
+    border: 2px solid var(--title-primary);
+    border-radius: 50%;
+    animation: breath 1.5s ease-in-out infinite;
+}
+
+#random-movie__info{
+    position: absolute;
+    top: 2rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+
+    width: min(700px, 90%);
+    text-align: center;
+}
+
+#random-movie__title{
+    color: var(--title-primary);
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+#random-movie__title span{
+    color: var(--text-primary);
+    font-style: italic;
+}
+
+#random-movie__description{
+    color: var(--text-primary);
+}
+
+@keyframes breath {
+    0%{
+        transform: scale(.9);
+    }
+    100%{
+        transform: scale(1.7);
+        opacity: 0;
+    }
+}
+
+@keyframes breathShadow {
+    0%{
+        box-shadow: 0px 0px 0px var(--secondary);
+    }
+    50%{
+        box-shadow: 0px 0px 50px var(--secondary);
+    }
+    100%{
+        box-shadow: 0px 0px 0px var(--secondary);
+    }
+}
+
