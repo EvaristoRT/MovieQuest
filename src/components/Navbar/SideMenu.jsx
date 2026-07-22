@@ -2,7 +2,7 @@ import { IoClose } from "react-icons/io5";
 import { AiFillHome } from "react-icons/ai";
 import { FaFilter, FaQuestion, FaDiceSix } from "react-icons/fa";
 import { FaGear } from "react-icons/fa6";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { ThemeContext } from "../../context/ThemeContext";
 function SideMenu({ closeMenu, isOpen }){
@@ -13,12 +13,35 @@ function SideMenu({ closeMenu, isOpen }){
                 <IoClose size={30} />
             </button>
             <ul className="side-menu__links">
-                <li className="active"><Link to="/" onClick={closeMenu
-                }><AiFillHome />Inicio</Link></li>
-                <li><FaFilter />Filtrar</li>
-                <li><FaQuestion />Recomendación</li>
-                <li><FaDiceSix />Sorprendeme</li>
-                <li><FaGear />Modo Oscuro 
+                <li>
+                    <NavLink 
+                        to="/" 
+                        className={({ isActive }) => isActive ? "active" : ""} 
+                        onClick={closeMenu}><AiFillHome />Inicio
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink 
+                        to="/filter" 
+                        className={({ isActive }) => isActive ? "active" : ""} 
+                        onClick={closeMenu}><FaFilter />Filtrar
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink 
+                        to="/wizard" 
+                        className={({ isActive }) => isActive ? "active" : ""} 
+                        onClick={closeMenu}><FaQuestion />Recomendación
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink 
+                        to="/random" 
+                        className={({ isActive }) => isActive ? "active" : ""} 
+                        onClick={closeMenu}><FaDiceSix />Sorprendeme
+                    </NavLink>
+                </li>
+                <li id="side-menu__mode"><FaGear />Modo Oscuro 
                     <label className="switch">
                         <input
                             type="checkbox"

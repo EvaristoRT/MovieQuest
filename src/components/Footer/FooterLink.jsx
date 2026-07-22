@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 
-function NavLink({ to, children, ...props }) {
+function FooterLink({ to, children, ...props }) {
     const { pathname } = useLocation();
 
     const handleClick = () => {
@@ -19,4 +19,4 @@ function NavLink({ to, children, ...props }) {
     );
 }
 
-export default NavLink;
+export default FooterLink;

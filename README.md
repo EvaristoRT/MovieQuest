@@ -176,7 +176,7 @@ src
 - [ ] Folder architecture (in progress)
 - [ ] Routing
 - [ ] Responsive layout (in progress)
-- [ ] Navigation
+- [x] Navigation
 - [x] Footer
 - [ ] 404 page
 

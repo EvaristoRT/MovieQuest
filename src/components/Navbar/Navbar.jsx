@@ -2,7 +2,7 @@ import { TiThMenu } from "react-icons/ti";
 import SideMenu from "./SideMenu";
 import "./Navbar.css";
 import { useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { FaMoon } from "react-icons/fa";
 import { ThemeContext } from "../../context/ThemeContext";
 function Navbar(){
@@ -29,10 +29,31 @@ function Navbar(){
             {/*Desktop section*/}
             <h1>MovieQuest</h1>
             <ul className="nav-menu__links">
-                <li className="active"><Link to="/">Inicio</Link></li>
-                <li>Filtrar</li>
-                <li>Recomendación</li>
-                <li>Sorprendeme</li>
+                <li>
+                    <NavLink 
+                        to="/"
+                        end
+                        className={({ isActive }) => isActive ? "active" : ""}>Inicio
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink 
+                        to="/filter"
+                        className={({ isActive }) => isActive ? "active" : ""}>Filtrar
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink 
+                        to="/wizard"
+                        className={({ isActive }) => isActive ? "active" : ""}>Recomendación
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink 
+                        to="/random"
+                        className={({ isActive }) => isActive ? "active" : ""}>Sorprendeme
+                    </NavLink>
+                </li>
                 <li><FaMoon /><label className="switch">
                         <input
                             type="checkbox"
