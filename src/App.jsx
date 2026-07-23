@@ -9,6 +9,7 @@ import ScrollToTop from './components/ScrollToTop';
 import MovieDetails from './pages/MovieDetails/MovieDetails';
 import Search from './pages/Search/Search';
 import RandomMovie from './pages/RandomMovie/RandomMovie';
+import Filter from './pages/Filter/Filter';
 
 function App() {
   const [darkMode, setDarkMode] = useState(true);
@@ -39,6 +40,10 @@ function App() {
           <Route 
             path='/random'
             element={<RandomMovie />}
+          />
+          <Route
+            path='/filter'
+            element={<Filter />} 
           />
         </Routes>
       </main>
