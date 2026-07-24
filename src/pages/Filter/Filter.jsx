@@ -3,6 +3,7 @@ import { IoIosArrowDown } from "react-icons/io";
 import { GenresContext } from "../../context/GenresContext";
 import { useContext, useState } from "react";
 import { FaCheck, FaStar, FaFilter } from "react-icons/fa";
+import MovieGrid from "../../components/MovieGrid/MovieGrid";
 
 function Filter(){
     const { genres } = useContext(GenresContext)
@@ -18,6 +19,7 @@ function Filter(){
     const right = ((maxYear - MIN_YEAR) / (MAX_YEAR - MIN_YEAR)) * 100;
     const width = right - left;
     const [rating, setRating] = useState(0);
+    const [isOpen, setIsOpen] = useState(true);
 
     function handleCheck(id){
         if(selectedGenres.includes(id)){
@@ -53,10 +55,12 @@ function Filter(){
         <section id="filter">
             <p id="filter__title">Universo Cinematográfico</p>
             <p id="filter__title__description">Explora nuestra selección de películas galardonadas, joyas independientes ocultas y grandes éxitos de taquilla de todas las generaciones.</p>
-            <button id="filter__button">
-                Filtros <IoIosArrowDown />
+            <button className={isOpen ? "filter__button open": "filter__button"}
+            onClick={()=>setIsOpen(!isOpen)}>
+                Filtros 
+                <IoIosArrowDown className={isOpen ? "arrow open" : "arrow"}/>
             </button>
-            <form id="filter__filters__container">
+            <form id="filter__filters__container" className={isOpen ? "open" : ""}>
                 <div id="filter__filters__genres">
                     <div className="filter__section__header">
                         <p className="filter__section__title">Generos</p>
