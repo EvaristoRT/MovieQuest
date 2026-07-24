@@ -46,7 +46,7 @@ function Search( { search }){
             <p id="search-results__title">Resultados para "{query}"</p>
             <p id="search-results__total">{movies.total_results} resultados</p>
         </section>
-        <MovieGrid movies={movies.results} sectionWidth={100}/>
+        <MovieGrid movies={movies.results} sectionWidth={"100%"}/>
         <p id="actual-page">Página actual {page}/{movies.total_pages}</p>
         <div className="page-control">
             <button id="page-control__prev" onClick={() => {

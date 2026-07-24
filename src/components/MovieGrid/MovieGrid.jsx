@@ -6,7 +6,7 @@ import { useContext } from "react";
 function MovieGrid({ movies, sectionWidth }){
     const {genresMap} = useContext(GenresContext);
     return(
-        <section className="movie-grid" style={{width:`${sectionWidth}%`}}>
+        <section className="movie-grid" style={{width:`${sectionWidth}`}}>
             {movies.map((movie, id) =>{
                 return(
                     <MovieCard 
