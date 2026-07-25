@@ -36,7 +36,7 @@ function Search( { search }){
             <SearchBar initialValue={query}/>
         </header>
         {!movies
-        ? <LoadingScreen />
+        ? <LoadingScreen message={"Cargando tu siguiente aventura..."}/>
         : <MovieGrid query={query} movies={movies} page={page} sectionWidth={"100%"} onPageChange={controlPage}/>
         }
         </>

@@ -37,7 +37,7 @@ function MovieDetails() {
         };
     }, []);
     if (isLoading) {
-        return <LoadingScreen />;
+        return <LoadingScreen message={"Cargando tu siguiente aventura..."}/>;
     }
     return (
         <>

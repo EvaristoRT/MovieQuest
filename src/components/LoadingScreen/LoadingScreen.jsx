@@ -1,6 +1,6 @@
 import "./LoadingScreen.css";
 import { FaPlay } from "react-icons/fa";
-function LoadingScreen(){
+function LoadingScreen( { message }){
     return(
         <section className="loading-screen">
             <div className="loading-screen__loader">
@@ -23,7 +23,7 @@ function LoadingScreen(){
             </div>
 
             <p className="loading-screen__text">
-                Cargando tu siguiente aventura...
+                {message}
             </p>
 
             <div className="loading-screen__progress">
