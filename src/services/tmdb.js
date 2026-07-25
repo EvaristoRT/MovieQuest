@@ -95,7 +95,7 @@ export async function getSearch(query, page){
         return data;
     }catch (error){
         console.log(error)
-        return[];
+        return{};
     }
 };
 
@@ -142,5 +142,25 @@ export async function getRandomMovie(){
     } catch (error) {
         console.error(error);
         return;
+    }
+}
+
+export async function getFilteredMovies(genres, minYear, maxYear, minDuration, maxDuration, minRating, page){
+    const genreString = genres.join("|")
+    let url = "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=es-MX&page="+page+"&primary_release_date.gte="+minYear+"-01-01&primary_release_date.lte="+maxYear+"-12-31&sort_by=vote_count.desc&vote_average.gte="+minRating+"&vote_average.lte=10&with_genres="+encodeURIComponent(genreString);
+    if (minDuration !== null) {
+        url += `&with_runtime.gte=${minDuration}`;
+    }
+
+    if (maxDuration !== null) {
+        url += `&with_runtime.lte=${maxDuration}`;
+    }
+    try{
+        const response = await fetch(url, options)
+        const data = await response.json();
+        return data;
+    }catch (error){
+        console.log("Errro al obtener peliculas filtradas");
+        return{};
     }
 }

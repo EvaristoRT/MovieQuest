@@ -10,8 +10,12 @@ function MovieGrid({ query,movies,page, sectionWidth, onPageChange }){
     return(
         <>
             <section className="search-results-info">
-                <p className="search-results__title">Resultados para "{query}"</p>
-                <p className="search-results__total">{movies.total_results} resultados</p>
+                {query && (
+                    <>
+                        <p className="search-results__title">Resultados para "{query}"</p>
+                        <p className="search-results__total">{movies.total_results} resultados</p>
+                    </>
+                )}
             </section>
             <section className="movie-grid" style={{width:`${sectionWidth}`}}>
                 <div className="movie-grid__movies">

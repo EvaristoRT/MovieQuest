@@ -1,18 +1,19 @@
 import "./Filter.css"
 import { IoIosArrowDown } from "react-icons/io";
 import { GenresContext } from "../../context/GenresContext";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FaCheck, FaStar, FaFilter } from "react-icons/fa";
 import MovieGrid from "../../components/MovieGrid/MovieGrid";
+import { getFilteredMovies } from "../../services/tmdb";
+import LoadingScreen from "../../components/LoadingScreen/LoadingScreen";
+
 
 function Filter(){
     const { genres } = useContext(GenresContext)
     const [selectedGenres, setSelectedGenres] = useState([]);
     const [minYear, setMinYear] = useState(1990)
     const [maxYear, setMaxYear] = useState(new Date().getFullYear())
-    const [less90, setLess90] = useState(false)    
-    const [between90_120, setBetween90_120] = useState(false)    
-    const [more120, setMore120] = useState(false)    
+    const [duration, setDuration] = useState(null); 
     const MIN_YEAR = 1990;
     const MAX_YEAR = new Date().getFullYear();
     const left = ((minYear - MIN_YEAR) / (MAX_YEAR - MIN_YEAR)) * 100;
@@ -20,6 +21,35 @@ function Filter(){
     const width = right - left;
     const [rating, setRating] = useState(0);
     const [isOpen, setIsOpen] = useState(true);
+    const [movies, setMovies] = useState(null);
+    let minDuration = null;
+    let maxDuration = null;
+    const [page, setPage] = useState(1);
+    const [appliedFilters, setAppliedFilters] = useState(null);
+
+    switch (duration) {
+        case "less90":
+            maxDuration = 89;
+            break;
+
+        case "between90_120":
+            minDuration = 90;
+            maxDuration = 120;
+            break;
+
+        case "more120":
+            minDuration = 121;
+            break;
+    }
+    const currentFilters = {
+        selectedGenres,
+        minYear,
+        maxYear,
+        minDuration,
+        maxDuration,
+        rating,
+        page
+    };
 
     function handleCheck(id){
         if(selectedGenres.includes(id)){
@@ -51,135 +81,187 @@ function Filter(){
             setMaxYear(value);
         }
     }
+    function handleDuration(option) {
+        setDuration(prev => prev === option ? null : option);
+    }
+
+    function controlPage(num) {
+        const newPage = page + num;
+        if (newPage < 1 || newPage > movies.total_pages) return;
+        setPage(newPage);
+    }
+
+    async function loadFilteredMovies(filters){
+        const data = await getFilteredMovies(
+            filters.selectedGenres,
+            filters.minYear,
+            filters.maxYear,
+            filters.minDuration,
+            filters.maxDuration,
+            filters.rating,
+            filters.page
+        );
+        setMovies(data);
+    }
+    function handleApplyFilters() {
+
+        if (
+            JSON.stringify(currentFilters) ===
+            JSON.stringify(appliedFilters)
+        ) {
+            return;
+        }
+
+        setAppliedFilters(currentFilters);
+
+        loadFilteredMovies(currentFilters);
+    }
+    useEffect(() => {
+        if (!appliedFilters) return;
+
+        loadFilteredMovies({
+            ...appliedFilters,
+            page
+        });
+
+    }, [page]);
+
     return(
         <section id="filter">
             <p id="filter__title">Universo Cinematográfico</p>
             <p id="filter__title__description">Explora nuestra selección de películas galardonadas, joyas independientes ocultas y grandes éxitos de taquilla de todas las generaciones.</p>
-            <button className={isOpen ? "filter__button open": "filter__button"}
-            onClick={()=>setIsOpen(!isOpen)}>
-                Filtros 
-                <IoIosArrowDown className={isOpen ? "arrow open" : "arrow"}/>
-            </button>
-            <form id="filter__filters__container" className={isOpen ? "open" : ""}>
-                <div id="filter__filters__genres">
-                    <div className="filter__section__header">
-                        <p className="filter__section__title">Generos</p>
-                        <label key="check-all" className="genre-pill">
-                            <input
-                                type="checkbox"
-                                name="all-genre"
-                                id="all-genre"
-                                checked={selectedGenres.length === genres.length}
-                                onChange={handleCheckAll}
-                            />
-                            <span>Seleccionar todos</span>
-                        </label>
-                    </div>
-                    {genres.map((genre, id)=>(
-                        <label key={genre.id} className="genre-pill">
-                            <input
-                                type="checkbox"
-                                name={genre.name}
-                                id={`genre-${genre.id}`}
-                                checked={selectedGenres.includes(genre.id)}
-                                onChange={()=>handleCheck(genre.id)}
-                            />
-                            <span>{genre.name}</span>
-                        </label>
-                    ))}
-                </div>
-                <div id="filter__filters__year">
-                    <div className="filter__section__header">
-                        <p className="filter__section__title">Año de Salida</p>
-                        <p id="min-max-year">{minYear} - {maxYear}</p>
-                    </div>
-                    <div className="year-slider">
-                        <div className="year-slider__track"></div>
-                        <div
-                            className="year-slider__selected"
-                            style={{
-                                left: `${left}%`,
-                                width: `${width}%`
-                            }}
-                        ></div>
-                        <input
-                            type="range"
-                            min={1990}
-                            max={new Date().getFullYear()}
-                            value={minYear}
-                            onChange={handleMinYear}
-                            className="year-range"
-                            id="min-year__slide"
-                        />
-                        <input
-                            type="range"
-                            min={1990}
-                            max={new Date().getFullYear()}
-                            value={maxYear}
-                            onChange={handleMaxYear}
-                            className="year-range"
-                            id="max-year__slide"
-                        />
-                    </div>
-                </div>
-                <div id="filter__filters__duration">
-                    <div className="filter__section__header">
-                        <p className="filter__section__title">Duración</p>
-                    </div>
-                    <div id="filter__filters__duration__checks">
-                        <label className="duration-check">
-                            <input type="checkbox" 
-                                checked={less90}
-                                onChange={() => setLess90(prev => !prev)}/>
-                            <span className="custom-checkbox">
-                                {less90 && <FaCheck />}
-                            </span>
-                            <span>&lt; 90 minutos</span>
-                        </label>
-                        <label className="duration-check">
-                            <input type="checkbox" 
-                                checked={between90_120}
-                                onChange={() => setBetween90_120(prev => !prev)}/>
-                            <span className="custom-checkbox">
-                                {between90_120 && <FaCheck />}
-                            </span>
-                            <span> 90 - 120 minutos</span>
-                        </label>
-                        <label className="duration-check">
-                            <input type="checkbox" 
-                                checked={more120}
-                                onChange={() => setMore120(prev => !prev)}/>
-                            <span className="custom-checkbox">
-                                {more120 && <FaCheck />}
-                            </span>
-                            <span>&gt; 120 minutos</span>
-                        </label>
-                    </div>
-                </div>
-                <div id="filter__filters__rating">
-                    <div className="filter__section__header">
-                        <p className="filter__section__title">Calificación Mínima</p>
-                    </div>
-                    <div id="stars-rating">
-                        {Array.from({ length: 10 }, (_, index) => {
-                            const value = index + 1;
-
-                            return (
-                                <FaStar
-                                    key={value}
-                                    onClick={() => rating === value ? setRating(value-1):setRating(value)}
-                                    className={
-                                        value <= rating
-                                            ? "stars-rating-star active"
-                                            : "stars-rating-star"
-                                    }
+            <div id="filter__main-container">
+                <button className={isOpen ? "filter__button open": "filter__button"}
+                onClick={()=>setIsOpen(!isOpen)}>
+                    Filtros 
+                    <IoIosArrowDown className={isOpen ? "arrow open" : "arrow"}/>
+                </button>
+                <form id="filter__filters__container" className={isOpen ? "open" : ""}>
+                    <div id="filter__filters__genres">
+                        <div className="filter__section__header">
+                            <p className="filter__section__title">Generos</p>
+                            <label key="check-all" className="genre-pill">
+                                <input
+                                    type="checkbox"
+                                    name="all-genre"
+                                    id="all-genre"
+                                    checked={selectedGenres.length === genres.length}
+                                    onChange={handleCheckAll}
                                 />
-                            );
-                        })}
+                                <span>Seleccionar todos</span>
+                            </label>
+                        </div>
+                        {genres.map((genre, id)=>(
+                            <label key={genre.id} className="genre-pill">
+                                <input
+                                    type="checkbox"
+                                    name={genre.name}
+                                    id={`genre-${genre.id}`}
+                                    checked={selectedGenres.includes(genre.id)}
+                                    onChange={()=>handleCheck(genre.id)}
+                                />
+                                <span>{genre.name}</span>
+                            </label>
+                        ))}
                     </div>
-                </div>
-                <button id="submit-filters">Filtrar <FaFilter /></button>
-            </form>
+                    <div id="filter__filters__year">
+                        <div className="filter__section__header">
+                            <p className="filter__section__title">Año de Salida</p>
+                            <p id="min-max-year">{minYear} - {maxYear}</p>
+                        </div>
+                        <div className="year-slider">
+                            <div className="year-slider__track"></div>
+                            <div
+                                className="year-slider__selected"
+                                style={{
+                                    left: `${left}%`,
+                                    width: `${width}%`
+                                }}
+                            ></div>
+                            <input
+                                type="range"
+                                min={1990}
+                                max={new Date().getFullYear()}
+                                value={minYear}
+                                onChange={handleMinYear}
+                                className="year-range"
+                                id="min-year__slide"
+                            />
+                            <input
+                                type="range"
+                                min={1990}
+                                max={new Date().getFullYear()}
+                                value={maxYear}
+                                onChange={handleMaxYear}
+                                className="year-range"
+                                id="max-year__slide"
+                            />
+                        </div>
+                    </div>
+                    <div id="filter__filters__duration">
+                        <div className="filter__section__header">
+                            <p className="filter__section__title">Duración</p>
+                        </div>
+                        <div id="filter__filters__duration__checks">
+                            <label className="duration-check">
+                                <input type="checkbox" 
+                                    checked={duration === "less90"}
+                                    onChange={() => handleDuration("less90")}/>
+                                <span className="custom-checkbox">
+                                    {duration === "less90" && <FaCheck />}
+                                </span>
+                                <span>&lt; 90 minutos</span>
+                            </label>
+                            <label className="duration-check">
+                                <input type="checkbox" 
+                                    checked={duration === "between90_120"}
+                                    onChange={() => handleDuration("between90_120")}/>
+                                <span className="custom-checkbox">
+                                    {duration === "between90_120" && <FaCheck />}
+                                </span>
+                                <span> 90 - 120 minutos</span>
+                            </label>
+                            <label className="duration-check">
+                                <input type="checkbox" 
+                                    checked={duration === "more120"}
+                                    onChange={() => handleDuration("more120")}/>
+                                <span className="custom-checkbox">
+                                    {duration === "more120" && <FaCheck />}
+                                </span>
+                                <span>&gt; 120 minutos</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div id="filter__filters__rating">
+                        <div className="filter__section__header">
+                            <p className="filter__section__title">Calificación Mínima</p>
+                        </div>
+                        <div id="stars-rating">
+                            {Array.from({ length: 10 }, (_, index) => {
+                                const value = index + 1;
+
+                                return (
+                                    <FaStar
+                                        key={value}
+                                        onClick={() => rating === value ? setRating(value-1):setRating(value)}
+                                        className={
+                                            value <= rating
+                                                ? "stars-rating-star active"
+                                                : "stars-rating-star"
+                                        }
+                                    />
+                                );
+                            })}
+                        </div>
+                    </div>
+                    <button type="button"id="submit-filters" onClick={handleApplyFilters}>Filtrar <FaFilter /></button>
+                </form>
+
+                {movies !== null 
+                    ?(<MovieGrid movies={movies} page={page} sectionWidth={"calc(100%-2rem)"} onPageChange={controlPage}/>)
+                    : <LoadingScreen message={"Usa los filtros para cargar películas..."}/>
+                }
+            </div>
         </section>
     );
 }
