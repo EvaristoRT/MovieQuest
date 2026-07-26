@@ -6,7 +6,7 @@ import { FaCheck, FaStar, FaFilter } from "react-icons/fa";
 import MovieGrid from "../../components/MovieGrid/MovieGrid";
 import { getFilteredMovies } from "../../services/tmdb";
 import LoadingScreen from "../../components/LoadingScreen/LoadingScreen";
-
+import { useParams, useSearchParams } from "react-router-dom";
 
 function Filter(){
     const { genres } = useContext(GenresContext)
@@ -26,6 +26,8 @@ function Filter(){
     let maxDuration = null;
     const [page, setPage] = useState(1);
     const [appliedFilters, setAppliedFilters] = useState(null);
+    const [searchParams, setSearchParams] = useSearchParams();
+    
 
     switch (duration) {
         case "less90":
@@ -47,8 +49,7 @@ function Filter(){
         maxYear,
         minDuration,
         maxDuration,
-        rating,
-        page
+        rating
     };
 
     function handleCheck(id){
@@ -104,6 +105,11 @@ function Filter(){
         setMovies(data);
     }
     function handleApplyFilters() {
+        const filtersChanged = JSON.stringify(currentFilters) !== JSON.stringify(appliedFilters);
+        const filtersToApply = {
+            ...currentFilters,
+            page: filtersChanged ? 1 : page
+        };
 
         if (
             JSON.stringify(currentFilters) ===
@@ -111,20 +117,110 @@ function Filter(){
         ) {
             return;
         }
+        if (filtersChanged) {
+            setPage(1);
+        }
 
-        setAppliedFilters(currentFilters);
+        setAppliedFilters(filtersToApply);
 
-        loadFilteredMovies(currentFilters);
+        setPage(filtersToApply.page);
+
+        setSearchParams({
+            genres: filtersToApply.selectedGenres.join("|"),
+            minYear: filtersToApply.minYear.toString(),
+            maxYear: filtersToApply.maxYear.toString(),
+            minDuration: filtersToApply.minDuration ?? "",
+            maxDuration: filtersToApply.maxDuration ?? "",
+            rating: filtersToApply.rating.toString(),
+            page: filtersToApply.page.toString()
+        });
+
+        loadFilteredMovies(filtersToApply);
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"}
+        )
     }
     useEffect(() => {
         if (!appliedFilters) return;
-
-        loadFilteredMovies({
+        const filtersToLoad = {
             ...appliedFilters,
             page
+        };
+
+        loadFilteredMovies(filtersToLoad);
+        setSearchParams({
+            genres: filtersToLoad.selectedGenres.join("|"),
+            minYear: filtersToLoad.minYear.toString(),
+            maxYear: filtersToLoad.maxYear.toString(),
+            minDuration: filtersToLoad.minDuration ?? "",
+            maxDuration: filtersToLoad.maxDuration ?? "",
+            rating: filtersToLoad.rating.toString(),
+            page: filtersToLoad.page.toString()
         });
 
     }, [page]);
+    useEffect(()=>{
+        const genresParam = searchParams.get("genres");
+        const minYearParam = searchParams.get("minYear");
+        const maxYearParam = searchParams.get("maxYear");
+        const minDurationParam = searchParams.get("minDuration");
+        const maxDurationParam = searchParams.get("maxDuration");
+        const ratingParam = searchParams.get("rating");
+        const pageParam = searchParams.get("page");
+        let restoredGenres = [];
+
+        if (genresParam) {
+            restoredGenres = genresParam
+                .split("|")
+                .map(id => Number(id));
+
+            setSelectedGenres(restoredGenres);
+        }
+        if(minYearParam){
+            setMinYear(Number(minYearParam));
+        }
+
+        if(maxYearParam){
+            setMaxYear(Number(maxYearParam));
+        }
+
+        if(minDurationParam){
+            minDuration = (Number(minDurationParam));
+        }
+
+        if(maxDurationParam){
+            maxDuration = (Number(maxDurationParam));
+        }
+
+        if(ratingParam){
+            setRating(Number(ratingParam));
+        }
+
+        if(pageParam){
+            setPage(Number(pageParam));
+        }
+        if (!minDurationParam && maxDurationParam === "89") {
+            setDuration("less90");
+        } else if (minDurationParam === "90" && maxDurationParam === "120") {
+            setDuration("between90_120");
+        } else if (minDurationParam === "121" && !maxDurationParam) {
+            setDuration("more120");
+        } else {
+            setDuration(null);
+        }
+        const restoredFilters = {
+            selectedGenres: restoredGenres,
+            minYear: minYearParam ? Number(minYearParam) : 1990,
+            maxYear: maxYearParam ? Number(maxYearParam) : new Date().getFullYear(),
+            minDuration: minDurationParam ? Number(minDurationParam) : null,
+            maxDuration: maxDurationParam ? Number(maxDurationParam) : null,
+            rating: ratingParam ? Number(ratingParam) : 0,
+            page: pageParam ? Number(pageParam) : 1
+        };
+        setAppliedFilters(restoredFilters);
+        loadFilteredMovies(restoredFilters);
+    },[searchParams])
 
     return(
         <section id="filter">
