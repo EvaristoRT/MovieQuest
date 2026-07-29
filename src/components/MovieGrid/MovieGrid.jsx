@@ -7,6 +7,7 @@ import { getSearch } from "../../services/tmdb";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 function MovieGrid({ query,movies,page, sectionWidth, onPageChange }){
     const {genresMap} = useContext(GenresContext);
+    const maxPages = 500;
     return(
         <>
             <section className="search-results-info">
@@ -33,7 +34,7 @@ function MovieGrid({ query,movies,page, sectionWidth, onPageChange }){
                         );
                     })}
                 </div>
-                <p className="actual-page">Página actual {page}/{movies.total_pages}</p>
+                <p className="actual-page">Página actual {page}/{movies.total_pages<=maxPages ?movies.total_pages: 500}</p>
                 <div className="page-control">
                     <button className="page-control__prev" onClick={() => {
                         window.scrollTo({

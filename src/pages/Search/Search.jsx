@@ -13,10 +13,11 @@ function Search( { search }){
     const query = searchParams.get("query");
     const [page, setPage] = useState(1);
     const [movies, setMovies] = useState(null);
+    const maxPages = 500;
     function controlPage(num) {
             const newPage = page + num;
     
-            if (newPage < 1 || newPage > movies.total_pages) return;
+            if (newPage < 1 || newPage > movies.total_pages || newPage > maxPages) return;
     
             setPage(newPage);
         }

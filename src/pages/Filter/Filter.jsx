@@ -27,6 +27,7 @@ function Filter(){
     const [page, setPage] = useState(1);
     const [appliedFilters, setAppliedFilters] = useState(null);
     const [searchParams, setSearchParams] = useSearchParams();
+    const maxPages = 500;
     
 
     switch (duration) {
@@ -88,7 +89,7 @@ function Filter(){
 
     function controlPage(num) {
         const newPage = page + num;
-        if (newPage < 1 || newPage > movies.total_pages) return;
+        if (newPage < 1 || newPage > movies.total_pages || newPage > maxPages) return;
         setPage(newPage);
     }
 
