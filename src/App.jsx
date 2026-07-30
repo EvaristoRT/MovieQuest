@@ -10,6 +10,7 @@ import MovieDetails from './pages/MovieDetails/MovieDetails';
 import Search from './pages/Search/Search';
 import RandomMovie from './pages/RandomMovie/RandomMovie';
 import Filter from './pages/Filter/Filter';
+import Wizard from './pages/Wizard/Wizard';
 
 function App() {
   const [darkMode, setDarkMode] = useState(true);
@@ -44,6 +45,10 @@ function App() {
           <Route
             path='/filter'
             element={<Filter />} 
+          />
+          <Route 
+            path='/wizard'
+            element={<Wizard />}
           />
         </Routes>
       </main>
