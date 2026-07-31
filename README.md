@@ -186,7 +186,7 @@ src
 - [x] Top rated movies
 - [ ] Upcoming movies
 - [x] Search
-- [ ] Filters
+- [x] Filters
 - [x] Movie details
 - [x] Similar movies
 
