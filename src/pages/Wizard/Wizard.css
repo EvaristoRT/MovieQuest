@@ -42,16 +42,18 @@
     background-color: var(--secondary);
     border-radius: 1rem;
     position: absolute;
+    transition: width 1s ease;
 }
 
 #wizard__main{
     width: 100%;
-    height: calc(100vh - 100px);
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
     gap: 1rem;
+    margin-bottom: 2rem;
 }
 
 .step__title{
@@ -117,6 +119,46 @@
 .step__option input:checked + div{
     border: 3px solid var(--text-primary);
     border-radius: 1rem;
+}
+
+#wizard__buttons{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--background-primary);
+    gap: 1rem;
+}
+.step-button{
+    padding: .5rem 1rem;
+    width: 100%;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+    font-size: 1.5rem;
+}
+
+#wizard__previous-step{
+    background-color: var(--search-bar-back);
+    border: 3px solid var(--search-bar-border);
+    color: var(--text-primary);
+}
+
+#wizard__next-step{
+    background-color: var(--secondary);
+    color: var(--title-primary);
+    border: none;
+    box-shadow: 0 0 10px var(--secondary);
+}
+
+#wizard__skip-step{
+    color: var(--secondary);
+    background-color: transparent;
+    border: none;
+    font-size: 1rem;
 }
 
 /*MoodStep*/
