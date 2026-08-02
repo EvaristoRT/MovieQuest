@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
 
 function Wizard(){
-    const [step, setStep] = useState(3)
+    const [step, setStep] = useState(0)
     const [answers, setAnswers] = useState({
         mood: null,
         time: null,
@@ -27,7 +27,7 @@ function Wizard(){
                     return <MoodStep answers={answers} updateAnswers={updateAnswers}/>;
 
                 case 1:
-                    return <TimeStep />;
+                    return <TimeStep answers={answers} updateAnswers={updateAnswers}/>;
 
                 case 2:
                     return <CompanyStep />;
