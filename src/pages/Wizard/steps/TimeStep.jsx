@@ -4,7 +4,7 @@ function TimeStep({answers, updateAnswers}){
     return(
             <>
             <p className="step__title">¿Cuánto tiempo tienes?</p>
-            <p className="step__description">Encontraremos películas que se adapten al tiempo que tienes disponible.</p>
+            <p className="step__description">Encontraremos películas que se adapten al tiempo que tienes disponible</p>
             <div className="step__option__container">
                 <label className="step__option">
                     <input 

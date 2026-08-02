@@ -30,7 +30,7 @@ function Wizard(){
                     return <TimeStep answers={answers} updateAnswers={updateAnswers}/>;
 
                 case 2:
-                    return <CompanyStep />;
+                    return <CompanyStep answers={answers} updateAnswers={updateAnswers}/>;
 
                 case 3:
                     return <GenresStep />;
@@ -57,6 +57,7 @@ function Wizard(){
             default:
                 break;
         }
+        console.log(answers);
         setStep(prev => prev + 1);
     }
     return(
