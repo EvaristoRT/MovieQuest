@@ -25,16 +25,16 @@ function Wizard(){
         switch (step) {
                 case 0:
                     return <MoodStep answers={answers} updateAnswers={updateAnswers}/>;
-
+                    break;
                 case 1:
                     return <TimeStep answers={answers} updateAnswers={updateAnswers}/>;
-
+                    break;
                 case 2:
                     return <CompanyStep answers={answers} updateAnswers={updateAnswers}/>;
-
+                    break;
                 case 3:
-                    return <GenresStep />;
-
+                    return <GenresStep answers={answers} updateAnswers={updateAnswers}/>;
+                    break;
                 default:
                     return null;
         }
@@ -57,7 +57,6 @@ function Wizard(){
             default:
                 break;
         }
-        console.log(answers);
         setStep(prev => prev + 1);
     }
     return(
@@ -78,7 +77,7 @@ function Wizard(){
                     ? <button className="step-button" id="wizard__previous-step" onClick={() => setStep(prev => prev - 1)}><FaArrowLeft />Paso anterior</button>
                     : null
                 }
-                <button className="step-button" id="wizard__next-step" onClick={handleStep}>Siguiente paso<FaArrowRight /></button>
+                <button className="step-button" id="wizard__next-step" onClick={handleStep}>{step !== 3 ?"Siguiente paso": "Encontrar mi película"}<FaArrowRight /></button>
                 {step===3
                     ? <button id="wizard__skip-step" onClick={() => setStep(prev => prev + 1)}>Saltar paso</button>
                     : null

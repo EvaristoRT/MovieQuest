@@ -172,7 +172,21 @@
 
 
 /*GenresStep*/
+#genres-container{
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+    border: 3px solid var(--search-bar-border);
+    border-radius: 1rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
 
+#select-all-container{
+    width: 100%;
+}
 
 /*ResultStep*/
 
