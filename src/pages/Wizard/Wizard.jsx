@@ -63,21 +63,23 @@ function Wizard(){
         <>
         <section id="wizard-section">
             <div id="wizard__header">
-                <p id="wizard__header__step">Paso {step > 3 ? 4 : step+1} de 4</p>
-                <p id="wizard__header__progress">{step * 25}% completado</p>
+                <p id="wizard__header__step">Paso {step > 2 ? 3 : step+1} de 3</p>
+                <p id="wizard__header__progress">{step !==3 ? step * (Math.floor((1/3)*100)) : 100}% completado</p>
                 <div id="wizard__header__progress-bar__back">
-                    <div id="wizard__header__progress-bar__front" style={{width:`${step * 25}%`}}></div>
+                    <div id="wizard__header__progress-bar__front" style={{width:`${step !== 3 ? step * (Math.floor((1/3)*100)): 100}%`}}></div>
                 </div>
             </div>
             <div id="wizard__main">
                 {renderStep()}
             </div>
             <div id="wizard__buttons">
-                {step > 0
+                {step > 0 && step < 3
                     ? <button className="step-button" id="wizard__previous-step" onClick={() => setStep(prev => prev - 1)}><FaArrowLeft />Paso anterior</button>
                     : null
                 }
-                <button className="step-button" id="wizard__next-step" onClick={handleStep}>{step !== 3 ?"Siguiente paso": "Encontrar mi película"}<FaArrowRight /></button>
+                {step >= 0 && step < 3
+                ? <button className="step-button" id="wizard__next-step" onClick={handleStep}>{step !== 2 ?"Siguiente paso": "Encontrar mi película"}<FaArrowRight /></button>
+                : null}
                 {step===3
                     ? <button id="wizard__skip-step" onClick={() => setStep(prev => prev + 1)}>Saltar paso</button>
                     : null
