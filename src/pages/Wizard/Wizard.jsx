@@ -32,9 +32,6 @@ function Wizard(){
                 case 2:
                     return <CompanyStep answers={answers} updateAnswers={updateAnswers}/>;
                     break;
-                case 3:
-                    return <GenresStep answers={answers} updateAnswers={updateAnswers}/>;
-                    break;
                 default:
                     return null;
         }
@@ -50,9 +47,6 @@ function Wizard(){
                 break;
             case 2:
                 if(answers.company === null) return;
-                break;
-            case 3:
-                if(answers.genres.length === 0) return;
                 break;
             default:
                 break;
@@ -80,10 +74,10 @@ function Wizard(){
                 {step >= 0 && step < 3
                 ? <button className="step-button" id="wizard__next-step" onClick={handleStep}>{step !== 2 ?"Siguiente paso": "Encontrar mi película"}<FaArrowRight /></button>
                 : null}
-                {step===3
+                {/*step===3
                     ? <button id="wizard__skip-step" onClick={() => setStep(prev => prev + 1)}>Saltar paso</button>
                     : null
-                }
+                */}
             </div>
         </section>
         </>

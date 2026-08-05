@@ -86,6 +86,8 @@
     justify-content: center;
     background-color: var(--search-bar-back);
     border-radius: 1rem;
+    transform: scale(1);
+    transition: transform .5s ease, background-color .5s ease;
 }
 
 .step__option input{
@@ -117,9 +119,31 @@
     font-size: 1.5rem
 }
 
+.step__option__card:hover{
+    border-color: var(--secondary);
+    transition: border-color .3s ease;
+}
+
+.step__option__card:hover svg{
+    color: var(--secondary);
+    background-color: var(--secondary-fade);
+    transition: color .3s ease, background-color .3s ease;
+}
+
+.step__option:has(input:checked){
+    background-color: var(--secondary-fade);
+    transform: scale(1.1);
+    animation: optionClick .5s ease;
+}
+
 .step__option input:checked + div{
-    border: 3px solid var(--text-primary);
+    border: 3px solid var(--secondary);
     border-radius: 1rem;
+}
+
+.step__option input:checked + div svg{
+    color: var(--secondary);
+    background-color: var(--secondary-fade);
 }
 
 #wizard__buttons{
@@ -140,6 +164,7 @@
     align-items: center;
     gap: .5rem;
     font-size: 1.5rem;
+    max-width: 400px;
 }
 
 #wizard__previous-step{
@@ -162,15 +187,6 @@
     font-size: 1rem;
 }
 
-/*MoodStep*/
-
-
-/*TimeStep*/
-
-
-/*CompanyStep*/
-
-
 /*GenresStep*/
 #genres-container{
     width: 100%;
@@ -188,6 +204,32 @@
     width: 100%;
 }
 
-/*ResultStep*/
+@keyframes optionClick {
+    0%{
+        transform: scale(1);
+    }
+    20%{
+        transform: scale(.98);
+    }
+    100%{
+        transform: scale(1.1);
+    }
+}
+
+@media (min-width:768px){
+    .step__option__card{
+        font-size: 5rem;
+    }
+    .step__option__card p{
+        font-size: 2rem;
+    }
+}
+@media (min-width:1024px){
+    .step__option{
+        width: calc((100% - 5rem)/4);
+    }
+
+    
+}
 
 
