@@ -164,3 +164,17 @@ export async function getFilteredMovies(genres, minYear, maxYear, minDuration, m
         return{};
     }
 }
+
+export async function getRecommendedMovie(genres, minRuntime, maxRuntime){
+    const page = Math.floor(Math.random() * 20) + 1;
+    const genresPipe = genres.join("|");
+    const today = new Date().toISOString().split("T")[0];
+
+    const response = await fetch("https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=es-MX&page="+page+"&release_date.lte="+today+"&sort_by=vote_count.desc&vote_count.gte=10&with_genres="+genresPipe+"&with_runtime.gte="+minRuntime+"&with_runtime.lte="+maxRuntime, options)
+
+    const data = await response.json();
+    const movieId = Math.floor(
+        Math.random() * data.results.length
+    );
+    return data.results[movieId].id;
+}
