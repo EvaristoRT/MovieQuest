@@ -173,9 +173,9 @@ src
 ### Core
 
 - [x] Project setup
-- [ ] Folder architecture (in progress)
-- [ ] Routing
-- [ ] Responsive layout (in progress)
+- [x] Folder architecture
+- [x] Routing
+- [x] Responsive layout
 - [x] Navigation
 - [x] Footer
 - [ ] 404 page
@@ -201,7 +201,7 @@ src
 
 ### Smart Features
 
-- [ ] Recommendation Wizard
+- [x] Recommendation Wizard
 - [x] Surprise Me
 - [ ] Movie Roulette
 - [ ] Movie Night Planner
